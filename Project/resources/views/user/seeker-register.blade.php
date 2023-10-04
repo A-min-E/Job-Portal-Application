@@ -4,7 +4,7 @@
 <div class="container mt-5">
     <div class='row'>
        <div class="col-md-6">
-        <h1>Looking for a job</h1>
+        <h1>Looking for a job?</h1>
         <h3>Please create an accont</h3>
         <img src="{{asset('images/click.png')}}" alt="">
        </div>
@@ -13,7 +13,7 @@
         <div class="card">
             <form action="{{route('store.seeker')}}" method="post"> 
                 @csrf
-                <div class="card-header">Register</div>
+                <div class="card-header"><h4>Register</h4></div>
                 <div class="card-body">
                     <div class="form-group">
                         <label for="name">Full name</label>

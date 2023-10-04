@@ -31,13 +31,28 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav ms-auto">
         <a class="nav-link active" aria-current="page" href="#">Home</a>
-        <a class="nav-link" href="#">Login</a>
-        <a class="nav-link" href="#">Job Seeker</a>
-        <a class="nav-link " href="#" >Employer</a>
+        @if(!Auth::check())
+          <a class="nav-link" href="{{route('login')}}">Login</a>
+          <a class="nav-link" href="{{route('create.seeker')}}">Job Seeker</a>
+          <a class="nav-link " href="{{route('create.employer')}}" >Employer</a>
+        @else
+        <a class="nav-link" href="#" id="logout">Logout</a>
+        @endif
+        <form action="{{route('logout')}}" method="post" id='logout-form'>
+          @csrf
+        </form>
       </div>
     </div>
   </div>
 </nav>
     @yield('content')
+    <script>
+      let logout = document.getElementById('logout');
+      let form = document.getElementById('logout-form');
+
+      logout.addEventListener('click',()=>{
+        form.submit();
+      })
+    </script>
   </body>
 </html>
