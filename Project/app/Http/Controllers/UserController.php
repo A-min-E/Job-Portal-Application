@@ -18,14 +18,14 @@ class UserController extends Controller
 
     public function storeSeeker(RegistrationFormRequest $request){
         
-        User::create([
+        $user = User::create([
             "name" => request("name"),
             "email" => request('email'),
             "password" => bcrypt(request('password')),
             "user_type" => self::JOB_SEEKER
         ]);
+        $user->sendEmailVerificationNotification();
         return redirect()->route('login')->with('successMessage','Account created successfuly');
-        return back();
     }
 
     public function createEmployer() {
@@ -33,13 +33,14 @@ class UserController extends Controller
     }
 
     public function storeEmployer(RegistrationFormRequest $request){
-        User::create([
+        $user=User::create([
             "name" => request('name'),
             'email'=> request('email'),
             'password' => bcrypt(request('password')),
             'user_type' => self::JOB_POSTER,
             'user_trial' => now()->addWeek()
         ]);
+        $user->sendEmailVerificationNotification();
         #you can practice Carbon it allow you to formate a date as you want 
         // /Carbon/Carbon::parse($date)->format('Y-m-d');
         return redirect()->route('login')->with('successMessage','Account created successfuly');

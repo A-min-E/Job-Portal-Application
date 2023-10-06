@@ -3,5 +3,5 @@
 @endif
 
 @if(Session::has('errorMessage'))
-<div class='alert alert-danger'>{{Session::get(errorMessage)}}</div>
+<div class='alert alert-danger'>{{Session::get('errorMessage')}}</div>
 @endif

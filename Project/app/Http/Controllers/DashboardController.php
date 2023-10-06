@@ -25,4 +25,7 @@ class DashboardController extends Controller
         
         #use a function inside the controller to controll all of the methodes instead of just index()
     }
+    public function verify(){
+        return view('user.verify');
+    }
 }
