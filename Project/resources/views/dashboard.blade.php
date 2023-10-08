@@ -4,7 +4,7 @@
 <div class="container mt-5">
     Hello, {{auth()->user()->name}}
     @if(Auth::check() && auth()->user()->user_type == 'employer')
-    <p class='text text-center'>Your trial will expire on {{auth()->user()->user_trial}}</p>
+    <p class='text text-center'>Your trial {{now()->format('Y-m-d') > auth()->user()->user_trial?  'was' : 'will'}}  expire on {{auth()->user()->user_trial}}</p>
     @endif
     <div class='row justify-content-center'>
        

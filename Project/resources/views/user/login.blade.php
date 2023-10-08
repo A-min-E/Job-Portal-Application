@@ -27,7 +27,7 @@
                     </div>
                     <br> 
                     <div class="form-group text-center">
-                        <button class='btn btn-primary' type='submit'>Register</button>
+                        <button class='btn btn-primary' type='submit'>Login</button>
                     </div>
                 </div>
             </from>
