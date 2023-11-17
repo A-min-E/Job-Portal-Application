@@ -26,7 +26,8 @@ class UserController extends Controller
         ]);
         Auth::login($user);
         $user->sendEmailVerificationNotification();
-        return redirect()->route('verification.notice')->with('successMessage','Account created successfuly');
+        return response()->json('success');
+        // return redirect()->route('verification.notice')->with('successMessage','Account created successfuly');
     }
 
     public function createEmployer() {
@@ -41,11 +42,13 @@ class UserController extends Controller
             'user_type' => self::JOB_POSTER,
             'user_trial' => now()->addWeek()
         ]);
-        $user->sendEmailVerificationNotification();
+        
         #you can practice Carbon it allow you to formate a date as you want 
         // /Carbon/Carbon::parse($date)->format('Y-m-d');
         Auth::login($user);
-        return redirect()->route('verificarion.notice')->with('successMessage','Account created successfuly');
+        $user->sendEmailVerificationNotification();
+        return response()->json('success');
+        // return redirect()->route('verificarion.notice')->with('successMessage','Account created successfuly');
     }
 
     public function login(){

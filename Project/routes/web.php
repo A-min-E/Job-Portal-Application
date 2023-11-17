@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Middleware\isEmployer;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SubscriptionController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 /*
@@ -44,4 +46,11 @@ Route::get('/dashboard',[DashboardController::class,'index'])->middleware('verif
 Route::get('/verify',[DashboardController::class,'verify'])->name('verification.notice');
 Route::get('/resend/verification/email',[DashboardController::class,'resend'])->name('resend.mail');
 
+Route::get('subscribe',[SubscriptionController::class,'subscribe']);
 
+Route::get('pay/week',[SubscriptionController::class,'initiatePayment'])->name('pay.weekly');
+Route::get('pay/month',[SubscriptionController::class,'initiatePayment'])->name('pay.monthly');
+Route::get('pay/year  ',[SubscriptionController::class,'initiatePayment'])->name('pay.yearly');
+
+Route::get('payment/success',[SubscriptionController::class,'paymentSuccess'])->name('payment.success');
+Route::get('payment/cancel',[SubscriptionController::class,'cancel'])->name('payment.cancel');
